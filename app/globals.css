@@ -1,0 +1,427 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Supprimer tous les styles pour le header dans ce fichier global */
+header,
+header * {
+  background-color: transparent !important;
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* Seule la classe scrolled (ajoutée via JavaScript) peut ajouter un fond */
+header.scrolled {
+  background-color: rgba(23, 37, 84, 0.95) !important;
+}
+
+/* Réinitialisation pour éliminer tout espace blanc en haut */
+html, body, #__next {
+  margin: 0 !important;
+  padding: 0 !important;
+  scroll-padding-top: 0 !important;
+}
+
+body::before {
+  display: none !important;
+}
+
+/* Forcer la transparence du header */
+header,
+header.bg-transparent {
+  background-color: transparent !important;
+  background-image: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Reset main padding for hero sections */
+main {
+  padding-top: 0 !important;
+}
+
+@layer base {
+  html, body {
+    @apply bg-white text-dark p-0 m-0;
+  }
+  
+  body {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-primary;
+  }
+}
+
+/* S'assurer que les sections hero démarrent tout en haut */
+[class*="hero"], section:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-secondary text-white px-6 py-3 rounded-full hover:bg-opacity-90 transition-all hover:scale-105 hover:shadow-lg;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 rounded-full hover:bg-primary hover:text-white transition-all hover:scale-105 hover:shadow-lg;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-serif text-primary mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-2xl font-serif text-primary mb-6;
+  }
+  
+  .divider {
+    @apply h-1 w-16 bg-secondary mb-8;
+  }
+
+  /* Conteneurs responsifs */
+  .container {
+    @apply px-4 mx-auto;
+    max-width: 100%;
+    
+    @media (min-width: 640px) {
+      max-width: 640px;
+    }
+    
+    @media (min-width: 768px) {
+      max-width: 768px;
+    }
+    
+    @media (min-width: 1024px) {
+      max-width: 1024px;
+    }
+    
+    @media (min-width: 1280px) {
+      max-width: 1280px;
+    }
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Classes d'animation */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-zoom-in {
+  animation: zoomIn 0.8s ease-out forwards;
+}
+
+.animate-ripple {
+  animation: ripple 1.5s ease-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Animation delay */
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Effets de survol améliorés */
+.hover-grow {
+  transition: transform 0.3s ease;
+}
+.hover-grow:hover {
+  transform: scale(1.05);
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Effets d'interaction */
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #E6B55C;
+  transition: width 0.3s ease;
+}
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+.ripple-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%) scale(0);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.ripple-button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Couleurs plus vives pour les éléments spécifiques */
+.text-primary {
+  color: #164C6A !important;
+  font-weight: 600;
+}
+
+.text-secondary {
+  color: #E6B55C !important;
+  font-weight: 600;
+}
+
+.bg-primary {
+  background-color: #4682b4 !important; /* Couleur bleu acier pour le header */
+}
+
+.bg-secondary {
+  background-color: #E6B55C !important;
+}
+
+.bg-light {
+  background-color: #F9F9F9 !important;
+}
+
+/* Effet de glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Styles pour le contenu principal */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Styles pour les sections */
+section {
+  position: relative;
+}
+
+/* Styles spécifiques qui doivent être en CSS pur */
+.bg-primary {
+  background-color: #4682b4 !important; /* Couleur bleu acier pour le header */
+}
+
+.bg-secondary {
+  background-color: #E6B55C !important;
+}
+
+.bg-light {
+  background-color: #F9F9F9 !important;
+}
+
+.text-primary {
+  color: #164C6A !important;
+}
+
+.text-secondary {
+  color: #E6B55C !important;
+}
+
+.text-dark {
+  color: #333333 !important;
+}
+
+.border-primary {
+  border-color: #4682b4 !important;
+}
+
+.border-secondary {
+  border-color: #E6B55C !important;
+}
+
+/* Styles spécifiques pour les formulaires */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(21, 77, 107, 0.5);
+}
+
+/* Styles pour les liens */
+a {
+  transition: color 0.2s;
+}
+
+/* Ajustements pour le header fixe */
+main {
+  padding-top: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.25rem; 
+  }
+  .py-16 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .px-8 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Styles spécifiques aux appareils mobiles pour améliorer l'ergonomie */
+@media (max-width: 480px) {
+  button, 
+  .btn-primary,
+  .btn-outline,
+  [type="button"],
+  [type="submit"] {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  input, select, textarea {
+    font-size: 16px; /* Évite le zoom automatique sur iOS */
+  }
+  
+  .gap-12 {
+    gap: 1.5rem;
+  }
+}
+
+/* Ajouter après les autres styles */
+option {
+  background-color: white !important;
+  color: black !important;
+} 
