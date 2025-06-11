@@ -1,9 +1,15 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { supabase } from '@/utils/supabase/client';
+import { createClient } from '@supabase/supabase-js';
+
+const getSupabase = () => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+  return createClient(supabaseUrl, supabaseKey);
+};
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_votreCleSecreteStripe', {
-  apiVersion: '2023-10-16',
+  apiVersion: '2025-03-31.basil',
 });
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_votreSecretWebhook';
@@ -38,6 +44,9 @@ export async function POST(request: Request) {
       try {
         // Vérifier si Supabase est configuré
         if (process.env.NODE_ENV !== 'development' || (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)) {
+          // Créer une nouvelle instance de supabase
+          const supabase = getSupabase();
+          
           // Mettre à jour le statut de paiement dans la base de données
           const { error } = await supabase
             .from('reservations')

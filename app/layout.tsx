@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { Metadata } from 'next';
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
@@ -15,8 +15,14 @@ const playfair_display = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Ocean Lux - Croisière à Bonifacio",
-  description: "Offrez-vous l'occasion unique de partir en croisière depuis Bonifacio à destination des îles Lavezzi le temps d'une journée.",
+  title: {
+    template: '%s | OceanLux Croisières',
+    default: 'OceanLux Croisières | Hébergements et croisières de luxe'
+  },
+  description: 'Découvrez nos hébergements de luxe et croisières exclusives dans les plus belles destinations méditerranéennes.',
+  icons: {
+    icon: '/favicon.ico'
+  }
 };
 
 export default function RootLayout({

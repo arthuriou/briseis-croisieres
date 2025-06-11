@@ -10,13 +10,13 @@ const Footer = () => {
           {/* Logo */}
           <div className="mb-8 md:mb-0">
             <Link href="/">
-              <div className="relative w-40 h-16 md:w-48 md:h-20 mb-4">
+              <div className="relative w-36 h-14 md:w-48 md:h-20 mb-4">
                 <Image
                   src="/images/OceanLux_logo2.png"
                   alt="OceanLux Croisières"
                   fill
                   style={{ objectFit: "contain" }}
-                  priority
+                  priority  
                 />
               </div>
               <p className="text-xs uppercase tracking-wider text-center opacity-70">Croisières privées à Bonifacio</p>
@@ -60,17 +60,6 @@ const Footer = () => {
             <div className="flex flex-col space-y-2">
               <p>PORT, 20169 - BONIFACIO</p>
               <p>luxocean243@gmail.com</p>
-              <div className="flex items-center space-x-2">
-                <p>+33 7 73 73 87 37</p>
-                <a 
-                  href="https://wa.me/33773738737" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-                >
-                  <FaWhatsapp className="text-[#25D366] text-xl" />
-                </a>
-              </div>
             </div>
           </div>
 

@@ -15,6 +15,16 @@ header.scrolled {
   background-color: rgba(23, 37, 84, 0.95) !important;
 }
 
+/* Style pour masquer la barre de défilement tout en permettant le défilement */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
 /* Réinitialisation pour éliminer tout espace blanc en haut */
 html, body, #__next {
   margin: 0 !important;

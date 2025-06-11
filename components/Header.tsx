@@ -57,6 +57,7 @@ const Header = () => {
     { name: "MOMENTS FORTS", path: "/moments-forts" },
     { name: "YACHT", path: "/yacht" },
     { name: "CATAMARAN", path: "/catamaran" },
+    { name: "HÉBERGEMENTS", path: "/appartements" },
     { name: "PRIVATISATION", path: "/privatisation" },
     { name: "RÉGION", path: "/region" },
     { name: "GALERIE", path: "/galerie" },
@@ -123,7 +124,7 @@ const Header = () => {
         .nav-link-underline:hover::after,
         .nav-link-underline.active::after {
           width: 100%;
-        }
+        } 
 
         /* Style du header au scroll */
         header.scrolled {
@@ -163,9 +164,10 @@ const Header = () => {
               <Image 
                 src="/images/OceanLux_logo2.png"
                 alt="OceanLux Croisières"
-                width={180}
-                height={50}
-                className="h-auto"
+                width={120}
+                height={30}
+                sizes="(max-width: 768px) 120px, 180px"
+                className="h-auto w-[120px] md:w-[180px]"
                 priority
               />
           </div>
